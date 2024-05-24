@@ -5,8 +5,10 @@ import 'package:rxdart/subjects.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todos_api/models/todo.dart';
 import 'package:todos_api/src/todos_api.dart';
+import 'package:uuid/uuid.dart';
 
 class LocalStorageTodosApi extends TodosApi {
+  var uuid = const Uuid();
   final SharedPreferences _prefs;
   List<Todo> todos = [];
   late final _todoStreamController = BehaviorSubject<List<Todo>>.seeded(
@@ -41,6 +43,7 @@ class LocalStorageTodosApi extends TodosApi {
 
   @override
   Future<void> addTodo(Todo todo) async {
+    todo = todo.copyWith(id: uuid.v4());
     final todos = [..._todoStreamController.value, todo];
     _todoStreamController.add(todos);
     _prefs.setString(
