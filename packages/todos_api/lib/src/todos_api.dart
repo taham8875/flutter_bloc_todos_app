@@ -6,6 +6,7 @@ abstract class TodosApi {
   Future<void> addTodo(Todo todo);
   Future<void> updateTodo(Todo todo);
   Future<void> deleteTodo(String id);
+  Future<int> deleteCompletedTodos();
   Future<void> deleteAllTodos();
   Future<int> completedTodos();
   Future<int> completeAll({required bool isCompleted});
