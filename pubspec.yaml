@@ -1,5 +1,5 @@
 name: flutter_bloc_todos_app
-description: "A new Flutter project."
+description: "A Flutter project that demonstrates how to use the `flutter_bloc` package to implement a todo app."
 publish_to: 'none'
 version: 0.1.0
 
@@ -7,13 +7,29 @@ environment:
   sdk: '>=3.3.4 <4.0.0'
 
 dependencies:
+  bloc: ^8.1.1
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.1
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.0
+  local_storage_todos_api:
+    path: packages/local_storage_todos_api
+  shared_preferences: ^2.2.3
+  todos_api:
+    path: packages/todos_api
+  todos_repository:
+    path: packages/todos_repository
 
 dev_dependencies:
+  bloc_test: ^9.1.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  mockingjay: ^0.5.0
+  mocktail: ^1.0.0
 
 flutter:
   uses-material-design: true
+  generate: true

@@ -1,20 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc_todos_app/bootstrap.dart';
+import 'package:local_storage_todos_api/local_storage_todos_api.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final todosApi = LocalStorageTodosApi(
+    prefs: await SharedPreferences.getInstance(),
+  );
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+  bootstrap(todosApi: todosApi);
 }
